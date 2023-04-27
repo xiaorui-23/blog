@@ -1,0 +1,115 @@
+
+# Favicon（网站图标）
+favicon: /assets/favicon.jpeg
+
+# 主页大图
+index_img: https://pic1.zhimg.com/v2-e0ca937a1d3296e7463aa0aa096bef48_r.jpg
+default_top_img: https://pic1.zhimg.com/v2-e0ca937a1d3296e7463aa0aa096bef48_r.jpg
+
+nav:
+  logo: /assets/favicon.jpeg
+  display_title: false
+  fixed: true # fixed navigation bar
+
+menu:
+  首页: / || fas fa-home
+  关于: https://github.com/xiaorui-23
+
+search:
+  path: search.xml
+  field: post # post:文章范围、page:页面范围、all:覆盖所有
+  content: true # 内容是否包含每一篇文章的全部内容
+  template: ./search.xml # ./search.xml 指定定制的XML模板 
+
+# 开启本地搜索
+local_search:
+  enable: true
+
+hr_icon:
+  enable: true
+  icon: '\f197' # the unicode value of Font Awesome icon
+  icon-top: -10px
+
+# 头像 
+avatar: 
+  img: /assets/WechatIMG1.jpeg
+  effect: false
+
+# 社交图标
+social:
+  fab fa-github: https://github.com/xiaorui-23 || Github || "#1989fa"
+  fas fa-envelope: mailto:3399251596@qq.com || QQEmail || "#1989fa"
+  fab fa-weixin: https://raw.githubusercontent.com/xiaorui-23/xiaorui-23/master/Wechat.jpeg || WeChat || "#00c4b6"
+
+   
+permalink_pinyin:
+  enable: true
+  separator: '-' # default: '-'
+
+highlight_copy:  true
+
+code_word_wrap:  true
+
+toc:
+  enable: true
+  number: true
+  auto_open: true # auto open the sidebar
+
+# Related Articles
+related_post:
+  enable: true
+  # limit: 6 # Number of posts displayed  显示的文章数
+  date_type: created # or created or updated 文章日期顯示創建日或者更新日
+
+# 侧边栏
+# --------------------------------------
+aside:
+  enable: true
+  mobile: true # display on mobile
+  position: left # left or right 
+  card_tags color: true
+  card_author:
+    enable: true
+    description:
+    button:
+      enable: true
+      description: 小瑞的个人博客啦。
+      icon: fab fa-github
+      text: Follow Me
+      link: https://github.com/xiaorui-23
+  card_announcement:
+    enable: true
+    content: 小瑞的个人主页博客上线啦🎉🎉🎉。欢迎访问本站。感觉不错的话可以 ctrl/command + d 进行收藏哦
+
+# 复制自动追加版权
+# copy settings
+# copyright: Add the copyright information after copied content (複製的內容後面加上版權信息)
+copy:
+  enable: true
+  copyright:
+    enable: true
+    limit_count: 50
+
+
+# 訪問人數
+busuanzi:
+  site_uv: true
+  site_pv: true
+  page_pv: true
+
+runtimeshow:
+  enable: true
+  publish_date: 4/27/2023 00:00:00
+  #格式: 月/日/年 時間
+  #也可以 年/月/日 時間
+   
+
+# Footer Settings
+# --------------------------------------
+footer:
+  owner:
+    enable: true
+    since: 2023
+  copyright: false # false： Hexo那句不显示
+    
+    
