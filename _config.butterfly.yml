@@ -115,6 +115,7 @@ footer:
   owner:
     enable: true
     since: 2023
-  copyright: false # false： Hexo那句不显示
+  copyright: false
+  custom_text: <a href="https://beian.miit.gov.cn/"><span>蜀ICP备2021027422号-1</span></a>
     
     
