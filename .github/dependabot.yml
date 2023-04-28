@@ -1,10 +1,5 @@
 version: 2
 
-deploy:
-  type: git
-  repo: https://github.com/xiaorui-23/blog.git
-  branch: master
-
 updates:
 - package-ecosystem: npm
   directory: "/"

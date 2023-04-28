@@ -105,4 +105,6 @@ theme: butterfly # landscape
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type: ''
+  type: git
+  repo: https://github.com/xiaorui-23/blog.git
+  branch: master
