@@ -91,10 +91,11 @@ copy:
     limit_count: 50
 
 
+
 # 訪問人數
 busuanzi:
-  site_uv: true
-  site_pv: true
+  site_uv: false
+  site_pv: false
   page_pv: true
 
 runtimeshow:
@@ -102,7 +103,11 @@ runtimeshow:
   publish_date: 4/27/2023 00:00:00
   #格式: 月/日/年 時間
   #也可以 年/月/日 時間
-   
+
+# CDN:
+#   option:
+#   	busuanzi: busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js
+
 
 # Footer Settings
 # --------------------------------------
