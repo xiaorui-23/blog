@@ -1,0 +1,180 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>rollup简单使用 | 桃小瑞</title><meta name="author" content="桃小瑞"><meta name="copyright" content="桃小瑞"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="rollup.js的简单使用及上手，干货的教程。rollup.js是一个JavaScript的一款打包工具。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="rollup简单使用">
+<meta property="og:url" content="https://blog.taomo.tech/202211211755/index.html">
+<meta property="og:site_name" content="桃小瑞">
+<meta property="og:description" content="rollup.js的简单使用及上手，干货的教程。rollup.js是一个JavaScript的一款打包工具。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.taomo.tech/assets/WechatIMG1.jpeg">
+<meta property="article:published_time" content="2022-11-20T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-04-28T06:47:55.377Z">
+<meta property="article:author" content="桃小瑞">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="Rollup">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.taomo.tech/assets/WechatIMG1.jpeg"><link rel="shortcut icon" href="/assets/favicon.jpeg"><link rel="canonical" href="https://blog.taomo.tech/202211211755/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 桃小瑞","link":"链接: ","source":"来源: 桃小瑞","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'rollup简单使用',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-04-28 14:47:55'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/assets/WechatIMG1.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">41</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://github.com/xiaorui-23/blog"><i class="fa-fw fas fa-eject"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('https://pic1.zhimg.com/v2-e0ca937a1d3296e7463aa0aa096bef48_r.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="桃小瑞"><img class="site-icon" src="/assets/favicon.jpeg"/></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://github.com/xiaorui-23/blog"><i class="fa-fw fas fa-eject"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">rollup简单使用</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-11-20T16:00:00.000Z" title="发表于 2022-11-21 00:00:00">2022-11-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-04-28T06:47:55.377Z" title="更新于 2023-04-28 14:47:55">2023-04-28</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%89%8D%E7%AB%AF/JavaScript/">JavaScript</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="rollup简单使用"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p><code>rollup</code> 是和<code>webpack</code>、 <code>vite</code>齐名的一种打包工具。但<code>webpack</code>和<code>vite</code>更适合打包应用，<code>rollup</code>偏向于打包<code>类</code>、<code>库</code>这样的工具项目。<br>支持多种格式(<code>es</code>、<code>umd</code>、<code>cjs</code>等)打包。详细配置可以看<code>rollup</code>官网</p>
+<h1 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h1><p>全局安装<code>rollup</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pnpm i rollup -g</span><br></pre></td></tr></table></figure>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p><code>rollup</code> 也有很多配套的生态工具，我这里就不举例并安装了，大家可以去<code>npm</code>上面看。</p>
+<p>新建一个项目，并创建<code>rollop.config.js</code>，并添加配置</p>
+<h4 id="rollop-config-js"><a href="#rollop-config-js" class="headerlink" title="rollop.config.js"></a>rollop.config.js</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// 配置typescript</span><br><span class="line">import typescript from &#x27;rollup-plugin-typescript2&#x27;;</span><br><span class="line">// </span><br><span class="line">import clear from &#x27;rollup-plugin-clear&#x27;;</span><br><span class="line">// 简化引入路径</span><br><span class="line">import resolve from &#x27;rollup-plugin-node-resolve&#x27;;</span><br><span class="line">// 将commonJs模块转编es5</span><br><span class="line">import commonjs from &#x27;rollup-plugin-commonjs&#x27;;</span><br><span class="line">// 编译代码</span><br><span class="line">import babel from &#x27;rollup-plugin-babel&#x27;;</span><br><span class="line">// 压缩代码</span><br><span class="line">import &#123; terser &#125; from &#x27;rollup-plugin-terser&#x27;;</span><br><span class="line">// 静态文件存放</span><br><span class="line">import copy from &#x27;rollup-plugin-copy&#x27;;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  // 入口文件</span><br><span class="line">  input: [&#x27;./src/index.ts&#x27;],</span><br><span class="line">  // 输出目录</span><br><span class="line">  output: [</span><br><span class="line">    &#123;</span><br><span class="line">      dir: &#x27;bin&#x27;,//存放目录</span><br><span class="line">      format: &quot;es&quot;, // es模块导出，支持按需加载</span><br><span class="line">      name: &#x27;&#x27;,//名称</span><br><span class="line">      exports: &quot;named&quot;, // 指定导出模式（自动、默认、命名、无）</span><br><span class="line">      preserveModules: true, // 保留模块结构</span><br><span class="line">      preserveModulesRoot: &quot;src&quot;, // 将保留的模块放在根级别的此路径下</span><br><span class="line">   &#125;,</span><br><span class="line">  ],</span><br><span class="line">  // 插件目录</span><br><span class="line">  plugins: [</span><br><span class="line">    // 会自动读取 文件tsconfig.json配置</span><br><span class="line">    typescript(),</span><br><span class="line">    // 打包存放前，需要清除的目录</span><br><span class="line">    clear(&#123;</span><br><span class="line">      targets: [&#x27;bin&#x27;],</span><br><span class="line">    &#125;),</span><br><span class="line">    // 简化引入路径</span><br><span class="line">    /*</span><br><span class="line">      不配置：</span><br><span class="line">        export foo from &#x27;./foo/index.js&#x27;</span><br><span class="line">        import bar from &#x27;./bar/index.js&#x27;</span><br><span class="line">      配置：</span><br><span class="line">        export foo from &#x27;./foo&#x27;</span><br><span class="line">        import bar from &#x27;./bar&#x27;</span><br><span class="line">    */</span><br><span class="line">    resolve(),</span><br><span class="line">    // 将commonJs模块转编es5</span><br><span class="line">    commonjs(),</span><br><span class="line">    // 编译代码</span><br><span class="line">    babel(&#123;</span><br><span class="line">      exclude: &#x27;node_modules/**&#x27;,</span><br><span class="line">      runtimeHelpers: true,</span><br><span class="line">    &#125;),</span><br><span class="line">    // 压缩代码</span><br><span class="line">    terser(),</span><br><span class="line">    // 不打包的文件，直接copy放进我们指定的目录中</span><br><span class="line">    copy(&#123;</span><br><span class="line">      targets: [</span><br><span class="line">        &#123; </span><br><span class="line">          src: &#x27;./assets&#x27;, //静态文件</span><br><span class="line">          dest: &#x27;./bin/style/&#x27; //需要存放的目录</span><br><span class="line">        &#125;</span><br><span class="line">      ],</span><br><span class="line">    &#125;),</span><br><span class="line">  ],</span><br><span class="line">  /*</span><br><span class="line">    比如我们在自己的库中需要使用第三方库，例如jquery等，</span><br><span class="line">    又不想在最终生成的打包文件中出现jquery。这个时候我们就需要使用external属性。作用：排除不希望打包进项目的库</span><br><span class="line">  */ </span><br><span class="line">  external: [],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h1 id="package-json-配置"><a href="#package-json-配置" class="headerlink" title="package.json 配置"></a>package.json 配置</h1><p>这里我只例举出了相关的配置，可以根据实际位置进行修改</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&quot;main&quot;: &quot;bin/index.ts&quot;,</span><br><span class="line"> 	&quot;module&quot;: &quot;bin/index.js&quot;,</span><br><span class="line"> 	&quot;typings&quot;: &quot;bin/index.d.ts&quot;,</span><br><span class="line"> 	&quot;type&quot;: &quot;module&quot;,</span><br><span class="line"> 	&quot;scripts&quot;: &#123;</span><br><span class="line">   	&quot;build&quot;: &quot;rollup -c ./rollup.config.js&quot;,</span><br><span class="line">   	&quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span><br><span class="line"> 	&#125;,</span><br></pre></td></tr></table></figure>
+
+<h1 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h1><p>打包完成后的目录结构</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">项目名</span><br><span class="line">	- bin</span><br><span class="line">		- foo</span><br><span class="line">			index.d.ts</span><br><span class="line">			index.js</span><br><span class="line">		- demo</span><br><span class="line">			index.d.ts</span><br><span class="line">			index.js</span><br><span class="line">		- index.d.ts</span><br><span class="line">		- index.js</span><br><span class="line">	- src	</span><br><span class="line">		- foo</span><br><span class="line">			- index.ts</span><br><span class="line">		- demo</span><br><span class="line">			index.ts</span><br><span class="line">		- index.ts</span><br></pre></td></tr></table></figure>
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>总的来说<code>rollup</code>要比<code>webpack</code>的配置要简单一些，体积要小一些，没有那么复杂的配置，另外说一下，<code>rollup</code>本身就支持<code>es module</code>，<code>vite</code>也是基于<code>rollup</code>的。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://blog.taomo.tech">桃小瑞</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://blog.taomo.tech/202211211755/">https://blog.taomo.tech/202211211755/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.taomo.tech" target="_blank">桃小瑞</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%89%8D%E7%AB%AF/">前端</a><a class="post-meta__tags" href="/tags/JavaScript/">JavaScript</a><a class="post-meta__tags" href="/tags/Rollup/">Rollup</a></div><div class="post_share"><div class="social-share" data-image="/assets/WechatIMG1.jpeg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/202211211629/" title="前端优化篇"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">前端优化篇</div></div></a></div><div class="next-post pull-right"><a href="/202211211441/" title="var、let、const的区别"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">var、let、const的区别</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/202211211441/" title="var、let、const的区别"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-21</div><div class="title">var、let、const的区别</div></div></a></div><div><a href="/202211241626/" title="Promise详解-手写Promise，实现一款自己的简易Promise"><img class="cover" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/00278f25c57d401dbb7086d80adb5bbc~tplv-k3u1fbpfcp-no-mark:480:480:0:0.awebp?" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-24</div><div class="title">Promise详解-手写Promise，实现一款自己的简易Promise</div></div></a></div><div><a href="/202211262205/" title="详解JavaScript的String"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-26</div><div class="title">详解JavaScript的String</div></div></a></div><div><a href="/202211272047/" title="详解JavaScript的String（二）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-27</div><div class="title">详解JavaScript的String（二）</div></div></a></div><div><a href="/202211291744/" title="javaScript中的事件循环(event Loop)"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-29</div><div class="title">javaScript中的事件循环(event Loop)</div></div></a></div><div><a href="/202211301734/" title="Node从零到一，实现API的编写并能够访问（一）"><img class="cover" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/29b2ee30aa8c4c9b90ab799872e11015~tplv-k3u1fbpfcp-no-mark:480:480:0:0.awebp?" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-30</div><div class="title">Node从零到一，实现API的编写并能够访问（一）</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/assets/WechatIMG1.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">桃小瑞</div><div class="author-info__description">小瑞的个人博客</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">41</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xiaorui-23"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/xiaorui-23" target="_blank" title="Github"><i class="fab fa-github" style="color: #1989fa;"></i></a><a class="social-icon" href="mailto:3399251596@qq.com" target="_blank" title="QQEmail"><i class="fas fa-envelope" style="color: #1989fa;"></i></a><a class="social-icon" href="https://raw.githubusercontent.com/xiaorui-23/xiaorui-23/master/WeChatOfficialAccount.jpg" target="_blank" title="WeChat"><i class="fab fa-weixin" style="color: #00c4b6;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">小瑞的个人主页博客上线啦🎉🎉🎉。欢迎访问本站。感觉不错的话可以 ctrl/command + d 进行收藏哦</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="toc-number">2.</span> <span class="toc-text">环境配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8"><span class="toc-number">3.</span> <span class="toc-text">使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#rollop-config-js"><span class="toc-number">3.0.0.1.</span> <span class="toc-text">rollop.config.js</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#package-json-%E9%85%8D%E7%BD%AE"><span class="toc-number">4.</span> <span class="toc-text">package.json 配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="toc-number">5.</span> <span class="toc-text">目录结构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">6.</span> <span class="toc-text">总结</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/202304271414/" title="Flutter 集成个推推送-安卓原生篇"><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f489ded6c25743849ffdb89442f81903~tplv-k3u1fbpfcp-zoom-crop-mark:1512:1512:1512:851.awebp?" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Flutter 集成个推推送-安卓原生篇"/></a><div class="content"><a class="title" href="/202304271414/" title="Flutter 集成个推推送-安卓原生篇">Flutter 集成个推推送-安卓原生篇</a><time datetime="2023-04-26T16:00:00.000Z" title="发表于 2023-04-27 00:00:00">2023-04-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/202304251430/" title="使用 chat_flutter 进行聊天记录展示"><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5d617b372a1245c7851afd72de31387b~tplv-k3u1fbpfcp-no-mark:480:480:0:0.awebp?" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="使用 chat_flutter 进行聊天记录展示"/></a><div class="content"><a class="title" href="/202304251430/" title="使用 chat_flutter 进行聊天记录展示">使用 chat_flutter 进行聊天记录展示</a><time datetime="2023-04-24T16:00:00.000Z" title="发表于 2023-04-25 00:00:00">2023-04-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/202302271246/" title="css box-shadow 画图之带有质感的盒子"><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f8da2317b4824374a87716c1ecf3120f~tplv-k3u1fbpfcp-zoom-1.image" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="css box-shadow 画图之带有质感的盒子"/></a><div class="content"><a class="title" href="/202302271246/" title="css box-shadow 画图之带有质感的盒子">css box-shadow 画图之带有质感的盒子</a><time datetime="2023-02-26T16:00:00.000Z" title="发表于 2023-02-27 00:00:00">2023-02-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/202302111244/" title="three.js-结合dat.gui实现界面可视化修改及调试"><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3230b8f802854de9968d78f466012593~tplv-k3u1fbpfcp-no-mark:480:480:0:0.awebp?" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="three.js-结合dat.gui实现界面可视化修改及调试"/></a><div class="content"><a class="title" href="/202302111244/" title="three.js-结合dat.gui实现界面可视化修改及调试">three.js-结合dat.gui实现界面可视化修改及调试</a><time datetime="2023-02-10T16:00:00.000Z" title="发表于 2023-02-11 00:00:00">2023-02-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/202302062138/" title="Vue 2 中实现 CustomRef 方式防抖/节流"><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d204f96489e34320b00672d342463ced~tplv-k3u1fbpfcp-no-mark:480:480:0:0.awebp?" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Vue 2 中实现 CustomRef 方式防抖/节流"/></a><div class="content"><a class="title" href="/202302062138/" title="Vue 2 中实现 CustomRef 方式防抖/节流">Vue 2 中实现 CustomRef 方式防抖/节流</a><time datetime="2023-02-05T16:00:00.000Z" title="发表于 2023-02-06 00:00:00">2023-02-06</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 By 桃小瑞</div><div class="footer_custom_text"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/"><span>蜀ICP备2021027422号-1</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
