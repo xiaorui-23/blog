@@ -13,7 +13,7 @@ nav:
 
 menu:
   首页: / || fas fa-home
-  关于: https://github.com/xiaorui-23
+  关于: https://github.com/xiaorui-23 || fas fa-eject
 
 search:
   path: search.xml
