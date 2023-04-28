@@ -107,4 +107,4 @@ theme: butterfly # landscape
 deploy:
   type: git
   repo: https://github.com/xiaorui-23/blog.git
-  branch: master
+  branch: site
