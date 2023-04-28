@@ -14,7 +14,6 @@ specifiers:
   hexo-renderer-stylus: ^2.1.0
   hexo-server: ^2.0.0
   hexo-theme-butterfly: ^4.8.1
-  hexo-theme-landscape: ^0.0.3
 
 dependencies:
   hexo: registry.npmmirror.com/hexo/5.4.2
@@ -30,7 +29,6 @@ dependencies:
   hexo-renderer-stylus: registry.npmmirror.com/hexo-renderer-stylus/2.1.0
   hexo-server: registry.npmmirror.com/hexo-server/2.0.0
   hexo-theme-butterfly: registry.npmmirror.com/hexo-theme-butterfly/4.8.1
-  hexo-theme-landscape: registry.npmmirror.com/hexo-theme-landscape/0.0.3
 
 packages:
 
@@ -1067,12 +1065,6 @@ packages:
       hexo-renderer-stylus: registry.npmmirror.com/hexo-renderer-stylus/2.1.0
     transitivePeerDependencies:
       - supports-color
-    dev: false
-
-  registry.npmmirror.com/hexo-theme-landscape/0.0.3:
-    resolution: {integrity: sha512-b0Di+TUVs4ESrNX4ULEh9uQmADpO6kr10rIJ2OGZM8suNQNFKdxn+vJUjnLfKkCPJAfVmS7/S83KCNYe4tpoNw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/hexo-theme-landscape/-/hexo-theme-landscape-0.0.3.tgz}
-    name: hexo-theme-landscape
-    version: 0.0.3
     dev: false
 
   registry.npmmirror.com/hexo-util/2.7.0:
